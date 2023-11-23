@@ -7,31 +7,44 @@ public class Varelager {
 	
 	public Varelager(int n) {
 		
-		throw new TODO("Varelager");
+		varer = new Vare[n];
+		antall = 0;
 
 	}
 	
 	public Vare[] getVarer() {
 		
-		throw new TODO("getVarer");
+		return this.varer;
 
 	}
 	
 	public boolean leggTilVare(Vare v) {
+		if (!(antall < varer.length)) {
+			return false;
+		}
 		
-		throw new TODO("leggTilVare");
+		varer[antall] = v;
+		antall++;
+		return true;
 
 	}
 	
 	public boolean leggTil(int varenr, String navn, double pris) {
 		
-		throw new TODO("leggTil");
+		Vare v = new Vare(varenr, navn, pris);
+		return (leggTilVare(v));
 
 	}
 	
 	public Vare finnVare(int varenr) {
 			
-		throw new TODO("finnVare");
+		for (Vare v : varer) {
+			if (v.getVarenr() == varenr) {
+				return v;
+			}
+		}
+		return null;
+		
 
 	}
 	
@@ -39,7 +52,11 @@ public class Varelager {
 	
 	public void printVarelager() {
 				
-		throw new TODO("printVarelager");
+		System.out.println(SEP);
+		for (int i=0; i < antall; i++) {
+			System.out.print(varer[i].toString());
+		}
+		System.out.println(SEP);
 
 	}
 	
